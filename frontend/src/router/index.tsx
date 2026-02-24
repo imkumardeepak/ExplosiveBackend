@@ -47,6 +47,7 @@ const router = createBrowserRouter([
           {
             path: '/masters',
             children: [
+              { index: true, element: <Navigate to="/masters/brands" replace /> },
               { path: 'products', element: withSuspense(ProductsPage) },
               { path: 'brands', element: withSuspense(BrandsPage) },
               { path: 'plants', element: withSuspense(PlantsPage) },
@@ -57,6 +58,7 @@ const router = createBrowserRouter([
           {
             path: '/barcode',
             children: [
+              { index: true, element: <Navigate to="/barcode/generate" replace /> },
               { path: 'generate', element: withSuspense(BarcodeGeneratePage) },
               { path: 'search', element: withSuspense(BarcodeSearchPage) },
             ],
@@ -64,10 +66,16 @@ const router = createBrowserRouter([
           {
             path: '/production',
             children: [
+              { index: true, element: <Navigate to="/production/plan" replace /> },
               { path: 'plan', element: withSuspense(ProductionPlanPage) },
             ],
           },
-          { path: '/dispatch', element: withSuspense(DispatchPage) },
+          {
+            path: '/dispatch',
+            children: [
+              { index: true, element: withSuspense(DispatchPage) },
+            ],
+          },
           { path: '/reports', element: withSuspense(ReportsPage) },
         ],
       },

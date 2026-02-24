@@ -2,9 +2,9 @@ import { NavLink } from 'react-router-dom';
 import { useUIStore } from '@/store/uiStore';
 import env from '@/lib/env';
 
-type NavLink = { to: string; label: string; icon: string; children?: never };
-type NavGroup = { label: string; icon: string; children: { to: string; label: string }[]; to?: never };
-type NavItem = NavLink | NavGroup;
+type NavLinkItem = { to: string; label: string; icon: string; children?: never };
+type NavGroupItem = { label: string; icon: string; children: { to: string; label: string }[]; to?: never };
+type NavItem = NavLinkItem | NavGroupItem;
 
 const NAV_ITEMS: NavItem[] = [
   { to: '/dashboard', label: 'Dashboard', icon: '📊' },
@@ -12,19 +12,19 @@ const NAV_ITEMS: NavItem[] = [
     label: 'Masters',
     icon: '📋',
     children: [
-      { to: '/masters/products', label: 'Products' },
       { to: '/masters/brands', label: 'Brands' },
+      { to: '/masters/products', label: 'Products' },
       { to: '/masters/plants', label: 'Plants' },
-      { to: '/masters/customers', label: 'Customers' },
       { to: '/masters/magazines', label: 'Magazines' },
+      { to: '/masters/customers', label: 'Customers' },
     ],
   },
   {
     label: 'Barcode',
     icon: '🔲',
     children: [
-      { to: '/barcode/generate', label: 'Generate' },
-      { to: '/barcode/search', label: 'Search' },
+      { to: '/barcode/generate', label: 'Generate L1' },
+      { to: '/barcode/search', label: 'Search Barcode' },
     ],
   },
   { to: '/production/plan', label: 'Production', icon: '🏭' },
@@ -44,7 +44,7 @@ export const Sidebar = () => {
       <nav className="sidebar__nav">
         {NAV_ITEMS.map((item) =>
           'children' in item && item.children ? (
-            <NavGroup key={item.label} item={item as NavGroup} isOpen={isSidebarOpen} />
+            <NavGroupComponent key={item.label} item={item as NavGroupItem} isOpen={isSidebarOpen} />
           ) : (
             <NavLink
               key={item.to}
@@ -63,7 +63,7 @@ export const Sidebar = () => {
   );
 };
 
-const NavGroup = ({ item, isOpen }: { item: NavGroup; isOpen: boolean }) => (
+const NavGroupComponent = ({ item, isOpen }: { item: NavGroupItem; isOpen: boolean }) => (
   <div className="sidebar__group">
     <div className="sidebar__group-header">
       <span className="sidebar__item-icon">{item.icon}</span>

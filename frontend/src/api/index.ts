@@ -1,6 +1,22 @@
 export { default as axiosInstance } from './axiosInstance';
 export * from './baseService';
+
 export { authService } from './services/auth.service';
 export { dashboardService } from './services/dashboard.service';
+export { countriesService } from './services/countries.service';
+export { statesService } from './services/states.service';
+export { mfgService } from './services/mfg.service';
+export { mfgLocationsService } from './services/mfgLocations.service';
+export { plantsService } from './services/plants.service';
+export { brandsService } from './services/brands.service';
 export { productsService } from './services/products.service';
+export { magazinesService } from './services/magazines.service';
+export { customersService } from './services/customers.service';
+export { transportService } from './services/transport.service';
+export { shiftsService } from './services/shifts.service';
+export { usersService, rolesService } from './services/users.service';
 export { barcodeService } from './services/barcode.service';
+export { dispatchService } from './services/dispatch.service';
+export { productionService } from './services/production.service';
+export { reportsService } from './services/reports.service';
+export { magazineStockService, magazineAllotmentService } from './services/magazineStock.service';

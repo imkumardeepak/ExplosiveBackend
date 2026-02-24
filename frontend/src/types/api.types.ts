@@ -6,35 +6,38 @@ export interface APIResponse<T = unknown> {
   errors: string[];
 }
 
-export interface PaginatedResponse<T> {
-  items: T[];
-  totalCount: number;
-  page: number;
-  pageSize: number;
-}
-
 export interface LoginRequest {
   username: string;
   password: string;
 }
 
 export interface LoginResponse {
-  user: UserMaster;
+  user: UserEntity;
   token: string;
 }
 
-export interface UserMaster {
+export interface UserEntity {
   id: number;
   username: string;
   email: string;
   company_ID: string;
-  role: RoleMaster;
-  isActive: boolean;
+  fullname?: string;
+  role: RoleEntity;
+  isActive?: boolean;
 }
 
-export interface RoleMaster {
+export interface RoleEntity {
   id: number;
   roleName: string;
+  pageAccesses?: PageAccess[];
+}
+
+export interface PageAccess {
+  pageName: string;
+  canView: boolean;
+  canCreate: boolean;
+  canEdit: boolean;
+  canDelete: boolean;
 }
 
 export type ApiError = {

@@ -1,12 +1,6 @@
-import axiosInstance from '../axiosInstance';
-import type { APIResponse, LoginRequest, LoginResponse } from '@/types/api.types';
+import { apiGet, apiPost } from '../baseService';
+import type { LoginRequest, LoginResponse } from '@/types/api.types';
 
 export const authService = {
-  login: async (credentials: LoginRequest): Promise<LoginResponse> => {
-    const response = await axiosInstance.post<APIResponse<LoginResponse>>(
-      '/Login/Login',
-      credentials,
-    );
-    return response.data.data;
-  },
+  login: (data: LoginRequest) => apiPost<LoginResponse>('/Login/Login', data),
 };
