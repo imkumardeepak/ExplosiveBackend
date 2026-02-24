@@ -1,0 +1,17 @@
+using Peso_Baseed_Barcode_Printing_System_API.Interface;
+using Peso_Baseed_Barcode_Printing_System_API.DBContext;
+using Peso_Baseed_Barcode_Printing_System_API.Entities;
+using Peso_Baseed_Barcode_Printing_System_API.Repositories;
+
+namespace Peso_Baseed_Barcode_Printing_System_API.Repositorys
+{
+    public class StateMasterRepository : GenericRepository<StateMaster>, IStateMasterRepository
+    {
+        private readonly ApplicationDbContext _context;
+        public StateMasterRepository(ApplicationDbContext context) : base(context){
+            _context = context;
+            }
+    }
+}
+
+

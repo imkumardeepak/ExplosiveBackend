@@ -1,0 +1,6 @@
+@Peso_Baseed_Barcode_Printing_System_API_HostAddress = http://localhost:5173
+
+GET {{Peso_Baseed_Barcode_Printing_System_API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
